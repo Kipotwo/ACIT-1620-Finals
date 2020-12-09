@@ -13,3 +13,16 @@ div{
 div img {
     width: 20%;
 }
+
+@media screen and (max-width: 640px){
+    section{
+        text-align: center;
+        height: auto;
+        width: 80vw;
+    }
+    footer{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
