@@ -12,7 +12,6 @@ for (let num = 0; num < 5; num++){
 
 function hoverImage(event){
     console.log(event.target)
-    let displayImage = document.querySelector('.displayed-img')
     let newsrc = event.target.getAttribute('src')
     let newalt = event.target.getAttribute('alt')
     displayImage.setAttribute('src', newsrc)
@@ -20,12 +19,26 @@ function hoverImage(event){
     footer.style.display= 'initial'
 }
 
-function clearInput(){
+function inputCheck(){
+    toCheck = input.value
+    if (toCheck.toLowerCase() === "blur"){
+        src = displayImage.getAttribute('src')
+        blurredImage = src.slice(0, 11) + 'B' + src.slice(11, 15)
+        alt = displayImage.getAttribute('alt')
+        blurredAlt = alt.slice(0, 4) + 'B' + alt.slice(4, 8)
+        displayImage.setAttribute('src', blurredImage)
+        displayImage.setAttribute('alt', blurredAlt)
+    }
+    else{
+        alert('Invalid Input, we only accept "blur"')
+    }
     input.value = '';
 }
+
+let displayImage = document.querySelector('.displayed-img')
 
 let input = document.querySelector('input')
 
 let button = document.querySelector('button')
 
-button.addEventListener('click', clearInput)
+button.addEventListener('click', inputCheck)
